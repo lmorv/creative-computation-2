@@ -8,6 +8,7 @@ author, and this description to match your project!
 
 "use strict";
 
+console.log(document);
 
 /**
 Description of preload
@@ -15,16 +16,12 @@ Description of preload
 function preload() {
 
 }
-
-
 /**
 Description of setup
 */
 function setup() {
 
 }
-
-
 /**
 Description of draw()
 */
