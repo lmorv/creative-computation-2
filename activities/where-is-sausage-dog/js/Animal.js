@@ -4,16 +4,16 @@ class Animal {
     this.y = y;
     this.image = image;
 
-    this.angle = ;
+    this.angle = 0;
   }
   update() {
-    display();
+    this.display();
   }
 
   display() {
     push();
     imageMode(CENTER);
-    traslate(this.x, this.y);
+    translate(this.x, this.y);
     rotate(this.angle);
     image(this.image, 0, 0);
     pop();
