@@ -24,7 +24,7 @@ class Animal {
       x < this.x + this.image.width / 2 &&
       y > this.y - this.image.height / 2 &&
       y < this.x + this.image.height / 2) {
-      return = true;
+      return true;
     } else {
       return false;
     }
