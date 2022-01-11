@@ -1,9 +1,8 @@
 /**
-Title of Project
-Author Name
+javascript review experiments
+Leonardo Morales
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+These are warm up experimens on basic javascript techniques done in class and by following recorded demos.
 */
 
 "use strict";
