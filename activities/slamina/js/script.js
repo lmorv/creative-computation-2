@@ -1,9 +1,8 @@
 /**
-Title of Project
+Slamina
 Author Name
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+This is a program that reads an random animal name backwards and detects the user's answer to the question of what animal the program is refernig to. 
 */
 
 "use strict";
