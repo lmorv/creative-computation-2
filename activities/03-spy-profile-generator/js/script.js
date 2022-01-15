@@ -1,9 +1,8 @@
 /**
-Title of Project
-Author Name
+Spy Profile Generator
+Leonardo Morales
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+A vanilla spy profile generator using JSON data sets.
 */
 
 "use strict";
