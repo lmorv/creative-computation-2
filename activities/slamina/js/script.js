@@ -146,26 +146,51 @@ const animals = [
 ];
 
 let currentAnimal = ``;
+let currentAnswer = ``;
 
 /**
 Description of setup
 */
 function setup() {
+  createCanvas(windowWidth, windowHeight);
 
+  if (annyang) {
+    let commands = {
+      'I think it is *animal': guessAnimal
+    };
+    annyang.addCommands(commands);
+    annyang.start();
+
+    textSize(32);
+    textStyle(BOLD);
+    textAlign(CENTER, CENTER);
+  }
 }
-
 
 /**
 Description of draw()
 */
 function draw() {
+  background(0);
 
+  if (currentAnswer === currentAnimal) {
+    fill(0, 255, 0);
+  } else {
+    fill(255, 0, 0);
+  }
+
+  text(currentAnswer, width / 2, height / 2);
 }
 
 function mousePressed() {
   currentAnimal = random(animals);
   let reverseAnimal = reverseString(currentAnimal);
   responsiveVoice.speak(reverseAnimal);
+}
+
+function guessAnimal(animal) {
+  currentAnswer = animal.toLowerCase;
+  // console.log(currentAnswer);
 }
 
 /**
