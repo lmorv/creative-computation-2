@@ -2,7 +2,7 @@
 bubble Popper
 Leo Morales
 
-A program about popping bubbles using the computer's camera and hand pose detection AI
+A program about popping bubbles with your index finger using the computer's camera and hand pose detection AI
 */
 
 "use strict";
