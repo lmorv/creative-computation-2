@@ -2,7 +2,7 @@
 Raving Redactionist
 Leonardo Morales
 
-A project about a raving redactionist presumably, using JQuery tecniques in some usefull way
+A project about a raving redactionist, presumably, using JQuery tecniques in some usefull way
 */
 
 "use strict";
