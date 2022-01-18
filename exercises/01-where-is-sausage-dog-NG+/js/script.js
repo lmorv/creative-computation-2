@@ -15,10 +15,10 @@ let animals = [];
 
 let sausageDogImage = undefined;
 let sausageDog = undefined;
-
+let state = `gameplay` // possible states are `startscreen`, `gameplay`,`endscreen`.
 
 /**
-preload
+preload loads images into variables for later use in draw()
 */
 function preload() {
   for (let i = 0; i < NUM_ANIMAL_IMAGES; i++) {
@@ -58,7 +58,15 @@ Description of draw()
 */
 function draw() {
   background(255, 255, 0);
+  if (state === `startscreen`) {
+    startscreen();
+  } else if (state === `gameplay`) {
+    gameplay();
 
+  }
+}
+
+function gameplay() {
   for (let i = 0; i < animals.length; i++) {
     animals[i].update();
   }
