@@ -17,7 +17,7 @@ let sausageDogImage = undefined;
 let sausageDog = undefined;
 let state = `startscreen` // possible states are `startscreen`, `gameplay`,`endscreen`.
 
-let objectOfInquiry = `Sausage Dog`; // the game object to find.
+const objectOfInquiry = `Sausage Dog`; // the game object to find.
 
 /**
 preload loads images into variables for later use in draw()
@@ -84,10 +84,10 @@ function startscreen() {
 
   push();
   fill(0);
-  textSize(24);
+  textSize(30);
   textAlign(CENTER);
   text(`Find the ${objectOfInquiry}.`, windowWidth / 2, windowHeight / 2);
-  text(`Click to continue`, windowWidth - 200, windowHeight - 200);
+  text(`Click to continue`, windowWidth - 300, windowHeight - 200);
   pop();
 }
 
@@ -101,11 +101,11 @@ function gameplay() {
 
 function endscreen() {
   push();
-  fill(0);
+  fill(0, 100, 255);
   textSize(50);
   textAlign(CENTER);
   text(`You found the ${objectOfInquiry}!`, windowWidth / 2, windowHeight / 2);
-  text(`Click to restart`, windowWidth - 200, windowHeight - 200);
+  text(`Click to restart`, windowWidth - 300, windowHeight - 200);
   pop();
 }
 
