@@ -15,9 +15,9 @@ let animals = [];
 
 let sausageDogImage = undefined;
 let sausageDog = undefined;
-let state = `gameplay` // possible states are `startscreen`, `gameplay`,`endscreen`.
+let state = `startscreen` // possible states are `startscreen`, `gameplay`,`endscreen`.
 
-let objectOfInquiry = `Sausage Dog`;
+let objectOfInquiry = `Sausage Dog`; // the game object to find.
 
 /**
 preload loads images into variables for later use in draw()
@@ -37,6 +37,12 @@ Description of setup
 */
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  setupGameObjects();
+}
+
+function setupGameObjects() {
+  animals = [];
 
   //create the animals
   for (let i = 0; i < NUM_ANIMALS; i++) {
@@ -67,16 +73,20 @@ function draw() {
     gameplay();
 
   } else if (state === `endscreen`) {
+    gameplay();
     endscreen();
   }
+
+  console.log(state);
 }
 
 function startscreen() {
+
   push();
-  fill(255);
+  fill(0);
   textSize(24);
   textAlign(CENTER);
-  text(`Find the ${objectOfInquiry}`, windowWidth / 2, windowHeight / 2);
+  text(`Find the ${objectOfInquiry}.`, windowWidth / 2, windowHeight / 2);
   text(`Click to continue`, windowWidth - 200, windowHeight - 200);
   pop();
 }
@@ -89,6 +99,27 @@ function gameplay() {
   sausageDog.update();
 }
 
+function endscreen() {
+  push();
+  fill(0);
+  textSize(50);
+  textAlign(CENTER);
+  text(`You found the ${objectOfInquiry}!`, windowWidth / 2, windowHeight / 2);
+  text(`Click to restart`, windowWidth - 200, windowHeight - 200);
+  pop();
+}
+
 function mousePressed() {
+
   sausageDog.mousePressed();
+
+  if (state === `startscreen`) {
+    state = `gameplay`;
+  } else if (state === `endscreen`) {
+
+    setupGameObjects();
+    state = `startscreen`;
+  } else if (sausageDog.found) {
+    state = `endscreen`;
+  };
 }
