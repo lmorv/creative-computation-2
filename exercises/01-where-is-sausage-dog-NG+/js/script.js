@@ -17,6 +17,8 @@ let sausageDogImage = undefined;
 let sausageDog = undefined;
 let state = `gameplay` // possible states are `startscreen`, `gameplay`,`endscreen`.
 
+let objectOfInquiry = `Sausage Dog`;
+
 /**
 preload loads images into variables for later use in draw()
 */
@@ -41,8 +43,9 @@ function setup() {
     let x = random(0, width);
     let y = random(0, height);
     let animalImage = random(animalImages);
+    let randomAngle = random(0, 360);
 
-    let animal = new Animal(x, y, animalImage);
+    let animal = new Animal(x, y, animalImage, randomAngle);
     animals.push(animal);
   }
 
@@ -50,7 +53,7 @@ function setup() {
 
   let x = random(0, width);
   let y = random(0, height);
-  sausageDog = new SausageDog(x, y, sausageDogImage);
+  sausageDog = new SausageDog(x, y, sausageDogImage, 0);
 }
 
 /**
@@ -63,7 +66,19 @@ function draw() {
   } else if (state === `gameplay`) {
     gameplay();
 
+  } else if (state === `endscreen`) {
+    endscreen();
   }
+}
+
+function startscreen() {
+  push();
+  fill(255);
+  textSize(24);
+  textAlign(CENTER);
+  text(`Find the ${objectOfInquiry}`, windowWidth / 2, windowHeight / 2);
+  text(`Click to continue`, windowWidth - 200, windowHeight - 200);
+  pop();
 }
 
 function gameplay() {

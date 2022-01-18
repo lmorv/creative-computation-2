@@ -1,10 +1,10 @@
 class Animal {
-  constructor(x, y, image) {
+  constructor(x, y, image, angle) {
     this.x = x;
     this.y = y;
     this.image = image;
 
-    this.angle = 0;
+    this.angle = angle;
   }
   update() {
     this.display();
