@@ -1,8 +1,8 @@
 /**
-Slamina
-Author Name
+Slamina NG +
+Leonardo Morales
 
-This is a program that reads an random animal name backwards and detects the user's answer to the question of what animal the program is refernig to. 
+This is a program that reads an random animal name backwards and detects the user's answer to the question of what animal the program is refernig to with some ditional features.
 */
 
 "use strict";
@@ -148,7 +148,7 @@ let currentAnimal = ``;
 let currentAnswer = ``;
 
 /**
-Description of setup
+setup() initializes annyang, creates the canvas to specified dimentions and defines global text styling settings
 */
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -167,33 +167,41 @@ function setup() {
 }
 
 /**
-Description of draw()
+draw() defines the color of the background, handles program state changes, and checks the user's spoken answer for correctness.
 */
 function draw() {
   background(0);
 
+  // check for answer correctness
   if (currentAnswer === currentAnimal) {
     fill(0, 255, 0);
   } else {
     fill(255, 0, 0);
   }
-
+  // display user's answer
   text(currentAnswer, width / 2, height / 2);
 }
 
+/**
+
+*/
 function mousePressed() {
   currentAnimal = random(animals);
   let reverseAnimal = reverseString(currentAnimal);
   responsiveVoice.speak(reverseAnimal);
 }
 
+
+/**
+
+*/
 function guessAnimal(animal) {
   currentAnswer = animal.toLowerCase;
   // console.log(currentAnswer);
 }
 
 /**
-Reverses the provided string
+ Reverses the provided string
 */
 function reverseString(string) {
   // Split the string into an array of characters
