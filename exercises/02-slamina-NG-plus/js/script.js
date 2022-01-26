@@ -150,7 +150,7 @@ const menuItems = [
 const startMessage = `click to hear today's special.`;
 
 let currentSpecial = ``;
-let currentAnswer = startMessage; // displays a starting prompt initially.
+let currentOrder = startMessage; // displays a starting prompt initially.
 
 
 let state = `startScreen`; // possible states are startScreen and placeOrder
@@ -210,21 +210,21 @@ checks for answer correctness to color text, then displays the answer along with
 */
 function displayAnswer() {
   // check for answer correctness
-  if (currentAnswer === startMessage) {
+  if (currentOrder === startMessage) {
     fill(255, 100, 200);
-    text(currentAnswer, width / 2, height / 2);
-  } else if (currentAnswer === currentSpecial) {
+    text(currentOrder, width / 2, height / 2);
+  } else if (currentOrder === currentSpecial) {
     push();
     fill(0, 255, 0);
     textSize(50);
-    text(`${currentAnswer} happens to be today's special!`, width / 2, height / 2);
+    text(`${currentOrder} happens to be today's special!`, width / 2, height / 2);
     pop();
     text(`good for you.`, width / 2, height / 2 + 150);
   } else {
     push();
     fill(255, 0, 0);
     textSize(50);
-    text(`${currentAnswer} is not today's special.`, width / 2, height / 2);
+    text(`${currentOrder} is not today's special.`, width / 2, height / 2);
     pop();
     text(`please order something sensible.`, width / 2, height / 2 + 150);
   }
@@ -254,8 +254,8 @@ function reverseString(string) {
 stores the guessed animal answer as a lower case string to match the answer format
 */
 function guessSpecial(special) {
-  currentAnswer = special.toLowerCase();
-  // console.log(currentAnswer);
+  currentOrder = special.toLowerCase();
+  // console.log(currentOrder);
 }
 
 function nextSpecial() {
