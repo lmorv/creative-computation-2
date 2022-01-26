@@ -149,7 +149,7 @@ const menuItems = [
 
 const startMessage = `click to hear today's special.`;
 
-let currentAnimal = ``;
+let currentSpecial = ``;
 let currentAnswer = startMessage; // displays a starting prompt initially.
 
 
@@ -163,7 +163,7 @@ function setup() {
 
   if (annyang) {
     let commands = {
-      'I would like a *menuItem': guessAnimal
+      'I would like a *menuItem': guessSpecial
     };
     annyang.addCommands(commands);
     annyang.start();
@@ -213,7 +213,7 @@ function displayAnswer() {
   if (currentAnswer === startMessage) {
     fill(255, 100, 200);
     text(currentAnswer, width / 2, height / 2);
-  } else if (currentAnswer === currentAnimal) {
+  } else if (currentAnswer === currentSpecial) {
     push();
     fill(0, 255, 0);
     textSize(50);
@@ -231,9 +231,9 @@ function displayAnswer() {
 
 }
 
-function sayAnimalBackwards(animal) {
-  let reverseAnimal = reverseString(currentAnimal);
-  responsiveVoice.speak(reverseAnimal);
+function saySpecialBackwards(animal) {
+  let reverseSpecial = reverseString(currentSpecial);
+  responsiveVoice.speak(reverseSpecial);
 }
 
 /**
@@ -253,14 +253,14 @@ function reverseString(string) {
 /**
 stores the guessed animal answer as a lower case string to match the answer format
 */
-function guessAnimal(animal) {
-  currentAnswer = animal.toLowerCase();
+function guessSpecial(special) {
+  currentAnswer = special.toLowerCase();
   // console.log(currentAnswer);
 }
 
-function nextQuestion() {
-  currentAnimal = random(menuItems);
-  sayAnimalBackwards(currentAnimal);
+function nextSpecial() {
+  currentSpecial = random(menuItems);
+  saySpecialBackwards(currentSpecial);
 }
 
 /**
@@ -269,8 +269,8 @@ resets the program to a new backwards animal uterance/quenstion.
 function mousePressed() {
   if (state === `startScreen`) {
     state = `placeOrder`;
-    nextQuestion();
+    nextSpecial();
   } else {
-    nextQuestion();
+    nextSpecial();
   }
 }
