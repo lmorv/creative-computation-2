@@ -147,13 +147,13 @@ const menuItems = [
   "black coffee"
 ];
 
-const startMessage = `click for today's special.`;
+const startMessage = `click to hear today's special.`;
 
 let currentAnimal = ``;
-let currentAnswer = startMessage;
+let currentAnswer = startMessage; // displays a starting prompt initially.
 
 
-let state = `startScreen`; // possible states are startScreen, slamTime, and endScreen
+let state = `startScreen`; // possible states are startScreen and placeOrder
 
 /**
 setup() initializes annyang, creates the canvas to specified dimentions and defines global text styling settings
@@ -168,7 +168,7 @@ function setup() {
     annyang.addCommands(commands);
     annyang.start();
 
-    textSize(90);
+    textSize(75);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
   }
@@ -179,7 +179,30 @@ draw() defines the color of the background, handles program state changes, and c
 */
 function draw() {
   background(0);
-  displayAnswer();
+  if (state === `startScreen`) {
+    startScreen();
+    displayAnswer();
+  } else if (state === `placeOrder`) {
+    placeOrder();
+    displayAnswer();
+  };
+
+  console.log(state);
+
+}
+
+function startScreen() {
+  push();
+  textSize(60);
+  text(`Welcome to the Double R Dinner!`, width / 2, height / 2 - 150);
+  pop();
+}
+
+function placeOrder() {
+  push();
+  textSize(60);
+  text(`What would you like to order?`, width / 2, height / 2 - 150);
+  pop();
 }
 
 /**
@@ -189,13 +212,16 @@ function displayAnswer() {
   // check for answer correctness
   if (currentAnswer === currentAnimal) {
     fill(0, 255, 0);
+    text(`${currentAnswer} happens to be today's special!`, width / 2, height / 2);
+    text(`good for you.`, width / 2, height / 2 + 150);
   } else if (currentAnswer === startMessage) {
     fill(255, 100, 200);
+    text(currentAnswer, width / 2, height / 2);
   } else {
     fill(255, 0, 0);
+    text(`${currentAnswer} is not today's special.`, width / 2, height / 2);
   }
-  // display user's answer
-  text(currentAnswer, width / 2, height / 2);
+
 }
 
 function sayAnimalBackwards(animal) {
@@ -226,7 +252,7 @@ function guessAnimal(animal) {
 }
 
 function nextQuestion() {
-  currentAnswer = ``;
+  // currentAnswer = ``;
   currentAnimal = random(menuItems);
   sayAnimalBackwards(currentAnimal);
 }
@@ -235,6 +261,14 @@ function nextQuestion() {
 resets the program to a new backwards animal uterance/quenstion.
 */
 function mousePressed() {
-  nextQuestion();
-
+  if (state === `startScreen`) {
+    state = `placeOrder`;
+    nextQuestion();
+  } else {
+    nextQuestion();
+  }
+  // else if (state === `placeOrder`) {
+  //   placeOrder();
+  //   nextQuestion();
+  // };
 }
