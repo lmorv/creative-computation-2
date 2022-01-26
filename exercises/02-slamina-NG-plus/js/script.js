@@ -147,7 +147,7 @@ const menuItems = [
   "black coffee"
 ];
 
-const startMessage = `click to begin.`;
+const startMessage = `click for today's special.`;
 
 let currentAnimal = ``;
 let currentAnswer = startMessage;
@@ -227,7 +227,7 @@ function guessAnimal(animal) {
 
 function nextQuestion() {
   currentAnswer = ``;
-  currentAnimal = random(menuItem);
+  currentAnimal = random(menuItems);
   sayAnimalBackwards(currentAnimal);
 }
 
