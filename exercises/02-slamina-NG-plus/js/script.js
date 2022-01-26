@@ -2,7 +2,7 @@
 Double R Dinner Simulator
 Leonardo Morales
 
-This is a program simulates the experiance of ordering a pie or a black coffe at the Duble R Dinner, but in the Black Lodge dimention. That is to say that the client can only order today's special, which is recited in reverse by a disembodied voice.
+This program, based on the Slamina activity, simulates the experience of ordering a pie or a black coffee at the Double R Dinner, but in the Black Lodge dimension. That is to say that the client can only order today's special, which is recited in reverse by a disembodied voice.
 */
 
 "use strict";

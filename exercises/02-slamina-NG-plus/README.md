@@ -1,3 +1,3 @@
-# Template p5 project
+# Double R Dinner Simulator
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+This program, based on the Slamina activity, simulates the experience of ordering a pie or a black coffee at the Double R Dinner, but in the Black Lodge dimension. That is to say that the client can only order today's special, which is recited in reverse by a disembodied voice.
