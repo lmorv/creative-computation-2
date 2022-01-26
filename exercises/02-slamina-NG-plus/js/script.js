@@ -144,9 +144,13 @@ const animals = [
   "zebra"
 ];
 
-let currentAnimal = ``;
-let currentAnswer = `click to begin.`;
+const startMessage = `click to begin.`;
 
+let currentAnimal = ``;
+let currentAnswer = startMessage;
+
+
+let state = `startScreen`; // possible states are startScreen, slamTime, and endScreen
 
 /**
 setup() initializes annyang, creates the canvas to specified dimentions and defines global text styling settings
@@ -161,7 +165,7 @@ function setup() {
     annyang.addCommands(commands);
     annyang.start();
 
-    textSize(105);
+    textSize(90);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
   }
@@ -172,7 +176,6 @@ draw() defines the color of the background, handles program state changes, and c
 */
 function draw() {
   background(0);
-
   displayAnswer();
 }
 
@@ -183,6 +186,8 @@ function displayAnswer() {
   // check for answer correctness
   if (currentAnswer === currentAnimal) {
     fill(0, 255, 0);
+  } else if (currentAnswer === startMessage) {
+    fill(255, 100, 200);
   } else {
     fill(255, 0, 0);
   }
