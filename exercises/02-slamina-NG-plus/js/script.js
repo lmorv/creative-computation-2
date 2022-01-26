@@ -182,13 +182,13 @@ function draw() {
   if (state === `startScreen`) {
     currentOrder = startMessage;
     startScreen();
-    displayAnswer();
+    displayOrder();
   } else if (state === `placeOrder`) {
     placeOrder();
-    displayAnswer();
+    displayOrder();
   } else {
     placeOrder();
-    displayAnswer();
+    displayOrder();
   };
 
   console.log(state);
@@ -212,7 +212,7 @@ function placeOrder() {
 /**
 checks for answer correctness to color text, then displays the answer along with a conditional message.
 */
-function displayAnswer() {
+function displayOrder() {
   // check for answer correctness
   if (currentOrder === startMessage) { // order not yet placed.
     fill(255, 100, 200);
