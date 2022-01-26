@@ -206,20 +206,27 @@ function placeOrder() {
 }
 
 /**
-checks for answer correctness to color text, then displays the answer.
+checks for answer correctness to color text, then displays the answer along with a conditional message.
 */
 function displayAnswer() {
   // check for answer correctness
-  if (currentAnswer === currentAnimal) {
-    fill(0, 255, 0);
-    text(`${currentAnswer} happens to be today's special!`, width / 2, height / 2);
-    text(`good for you.`, width / 2, height / 2 + 150);
-  } else if (currentAnswer === startMessage) {
+  if (currentAnswer === startMessage) {
     fill(255, 100, 200);
     text(currentAnswer, width / 2, height / 2);
+  } else if (currentAnswer === currentAnimal) {
+    push();
+    fill(0, 255, 0);
+    textSize(50);
+    text(`${currentAnswer} happens to be today's special!`, width / 2, height / 2);
+    pop();
+    text(`good for you.`, width / 2, height / 2 + 150);
   } else {
+    push();
     fill(255, 0, 0);
+    textSize(50);
     text(`${currentAnswer} is not today's special.`, width / 2, height / 2);
+    text(`please order something sensible.`, width / 2, height / 2 + 150);
+    pop();
   }
 
 }
@@ -252,7 +259,6 @@ function guessAnimal(animal) {
 }
 
 function nextQuestion() {
-  // currentAnswer = ``;
   currentAnimal = random(menuItems);
   sayAnimalBackwards(currentAnimal);
 }
@@ -267,8 +273,4 @@ function mousePressed() {
   } else {
     nextQuestion();
   }
-  // else if (state === `placeOrder`) {
-  //   placeOrder();
-  //   nextQuestion();
-  // };
 }
