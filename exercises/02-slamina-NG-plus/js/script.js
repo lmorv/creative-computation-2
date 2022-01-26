@@ -94,7 +94,7 @@ const menuItems = [
   "moravian chicken pie",
   "mustard tart",
   "neenish Tart",
-  "pască",
+  "pasca",
   "pastafrola",
   "pastel de nata",
   "pasty",
@@ -135,7 +135,7 @@ const menuItems = [
   "tamale pie",
   "greek cheese pie",
   "tarta de Santiago",
-  "tourtière",
+  "tourtiere",
   "treacle tart",
   "vlaai",
   "västerbotten pie",
@@ -153,7 +153,7 @@ let currentSpecial = ``;
 let currentOrder = startMessage; // displays a starting prompt initially.
 
 
-let state = `startScreen`; // possible states are startScreen and placeOrder
+let state = `startScreen`; // possible states are startScreen, placeOrder, and orderPlaced.
 
 /**
 setup() initializes annyang, creates the canvas to specified dimentions and defines global text styling settings
@@ -180,9 +180,13 @@ draw() defines the color of the background, handles program state changes, and c
 function draw() {
   background(0);
   if (state === `startScreen`) {
+    currentOrder = startMessage;
     startScreen();
     displayAnswer();
   } else if (state === `placeOrder`) {
+    placeOrder();
+    displayAnswer();
+  } else {
     placeOrder();
     displayAnswer();
   };
@@ -210,17 +214,19 @@ checks for answer correctness to color text, then displays the answer along with
 */
 function displayAnswer() {
   // check for answer correctness
-  if (currentOrder === startMessage) {
+  if (currentOrder === startMessage) { // order not yet placed.
     fill(255, 100, 200);
     text(currentOrder, width / 2, height / 2);
-  } else if (currentOrder === currentSpecial) {
+  } else if (currentOrder === currentSpecial) { // success condition.
+    // set state to success:
+    state = `orderPlaced`;
     push();
     fill(0, 255, 0);
     textSize(50);
     text(`${currentOrder} happens to be today's special!`, width / 2, height / 2);
     pop();
     text(`good for you.`, width / 2, height / 2 + 150);
-  } else {
+  } else { // fail condition.
     push();
     fill(255, 0, 0);
     textSize(50);
@@ -270,6 +276,8 @@ function mousePressed() {
   if (state === `startScreen`) {
     state = `placeOrder`;
     nextSpecial();
+  } else if (state === `orderPlaced`) {
+    state = `startScreen`;
   } else {
     nextSpecial();
   }
