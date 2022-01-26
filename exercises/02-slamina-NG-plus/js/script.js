@@ -2,7 +2,7 @@
 Slamina NG +
 Leonardo Morales
 
-This is a program that reads an random animal name backwards and detects the user's answer to the question of what animal the program is refernig to with some ditional features.
+This is a program simulates the experiance of ordering a pie or a black coffe at the Duble R Dinner but in the Black Lodge dimention. That is to say that the client can only order today's special, which is recited in reverse by a disembodied voice.
 */
 
 "use strict";
@@ -225,8 +225,8 @@ function displayAnswer() {
     fill(255, 0, 0);
     textSize(50);
     text(`${currentAnswer} is not today's special.`, width / 2, height / 2);
-    text(`please order something sensible.`, width / 2, height / 2 + 150);
     pop();
+    text(`please order something sensible.`, width / 2, height / 2 + 150);
   }
 
 }
