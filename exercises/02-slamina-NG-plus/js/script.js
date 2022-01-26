@@ -17,7 +17,7 @@ const menuItems = [
   "banana cream pie",
   "banoffee pie",
   "bay tat",
-  "bavarian Cream Pie",
+  "bavarian cream pie",
   "bean pie",
   "bedfordshire clanger",
   "bisteeya",
