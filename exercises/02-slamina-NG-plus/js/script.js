@@ -145,7 +145,8 @@ const animals = [
 ];
 
 let currentAnimal = ``;
-let currentAnswer = ``;
+let currentAnswer = `click to begin.`;
+
 
 /**
 setup() initializes annyang, creates the canvas to specified dimentions and defines global text styling settings
@@ -160,18 +161,25 @@ function setup() {
     annyang.addCommands(commands);
     annyang.start();
 
-    textSize(32);
+    textSize(105);
     textStyle(BOLD);
     textAlign(CENTER, CENTER);
   }
 }
 
 /**
-draw() defines the color of the background, handles program state changes, and checks the user's spoken answer for correctness.
+draw() defines the color of the background, handles program state changes, and checks the user's spoken answer for correctness while displaying it.
 */
 function draw() {
   background(0);
 
+  displayAnswer();
+}
+
+/**
+checks for answer correctness to color text, then displays the answer.
+*/
+function displayAnswer() {
   // check for answer correctness
   if (currentAnswer === currentAnimal) {
     fill(0, 255, 0);
@@ -182,26 +190,13 @@ function draw() {
   text(currentAnswer, width / 2, height / 2);
 }
 
-/**
-
-*/
-function mousePressed() {
-  currentAnimal = random(animals);
+function sayAnimalBackwards(animal) {
   let reverseAnimal = reverseString(currentAnimal);
   responsiveVoice.speak(reverseAnimal);
 }
 
-
 /**
-
-*/
-function guessAnimal(animal) {
-  currentAnswer = animal.toLowerCase;
-  // console.log(currentAnswer);
-}
-
-/**
- Reverses the provided string
+Reverses the provided string
 */
 function reverseString(string) {
   // Split the string into an array of characters
@@ -212,4 +207,26 @@ function reverseString(string) {
   let result = reverseCharacters.join('');
   // Return the result
   return result;
+}
+
+/**
+stores the guessed animal answer as a lower case string to match the answer format
+*/
+function guessAnimal(animal) {
+  currentAnswer = animal.toLowerCase();
+  // console.log(currentAnswer);
+}
+
+function nextQuestion() {
+  currentAnswer = ``;
+  currentAnimal = random(animals);
+  sayAnimalBackwards(currentAnimal);
+}
+
+/**
+resets the program to a new backwards animal uterance/quenstion.
+*/
+function mousePressed() {
+  nextQuestion();
+
 }
