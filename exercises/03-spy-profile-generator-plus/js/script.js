@@ -8,7 +8,7 @@ password is: resourcefulness
 
 "use strict";
 
-
+// Spy profile object
 let spyProfile = {
   name: `**REDACTED**`,
   alias: `**REDACTED**`,
@@ -16,10 +16,12 @@ let spyProfile = {
   password: `**REDACTED**`,
 };
 
+// Variables for profile data storage.
 let instrumentData = undefined;
 let objectData = undefined;
 let tarotData = undefined;
 
+// JSON data sets
 const instrumentURL = `https://raw.githubusercontent.com/dariusk/corpora/master/data/music/instruments.json`;
 const objectURL = `https://raw.githubusercontent.com/dariusk/corpora/master/data/objects/objects.json`;
 const tarotURL = `https://raw.githubusercontent.com/dariusk/corpora/master/data/divination/tarot_interpretations.json`;
@@ -28,7 +30,7 @@ const savedProfileKey = `spy-profile-data`; // used to setItem and getIten from 
 let data = JSON.parse(localStorage.getItem(savedProfileKey));
 
 /**
-Description of preload
+preload() loads the data from the JSON data sets into their corresponding variables.
 */
 function preload() {
   instrumentData = loadJSON(instrumentURL);
@@ -38,13 +40,12 @@ function preload() {
 
 
 /**
-Description of setup
+setup() creates a canvas to
 */
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  // check if there is saved profile data to load.
-  // if  the data variable is not null(empty) assign stored properties too spyProfile:
+  // check if there is saved profile data to load. if  the data variable is not null(empty) assign stored properties too spyProfile.
   if (data) {
     let password = prompt(`Agent! What is your password?!`);
 
