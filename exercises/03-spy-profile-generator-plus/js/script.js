@@ -40,14 +40,14 @@ function preload() {
 
 
 /**
-setup() creates a canvas to
+setup() creates a canvas and loads profile data, if present, checks password and generates a profile if no profile data is found.
 */
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
   // check if there is saved profile data to load. if  the data variable is not null(empty) assign stored properties too spyProfile.
   if (data) {
-    let password = prompt(`Agent! What is your password?!`);
+    let password = prompt(`Agent! What is your password?`);
 
     if (password === data.password) {
       setSpyData();
