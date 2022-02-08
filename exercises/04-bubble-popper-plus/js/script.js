@@ -42,15 +42,16 @@ Initializes the webcam and the Handpose, also creates the bubble objectS
 function setup() {
   createCanvas(640, 480);
 
-  // Access user's web cam:
+  // Access user's web cam and hide the resulting HTML element.
   video = createCapture(VIDEO);
   video.hide();
 
-  // load the Handpose model
+  // initialize the Handpose model and  transition to the running state when it loads
   handpose = ml5.handpose(video, {
     flipHorizontal: true
   }, function() {
     console.log(`Model loaded.`);
+    state = `running`;
   });
 
   // listen for predictions
@@ -59,7 +60,7 @@ function setup() {
     predictions = results;
   });
 
-  // Our bubble
+  // Our basic bubble
   bubble = {
     x: random(width),
     y: height,
@@ -70,9 +71,15 @@ function setup() {
 }
 
 /**
-Description of draw()
+Handles all posible states (loading, running)
 */
 function draw() {
+  if (state === `loading`) {
+    loading();
+  } else if (state === `running`) {
+    running();
+  }
+
   background(0);
 
   if (predictions.length > 0) {
@@ -119,5 +126,14 @@ function draw() {
   fill(0, 200, 100);
   noStroke();
   ellipse(bubble.x, bubble.y, bubble.size);
+  pop();
+}
+
+function loading() {
+  push();
+  textSize(32);
+  textStyle(BOLD);
+  textAlign(CENTER, CENTER);
+  text(`Loading ${modelName}...`, width / 2, height / 2);
   pop();
 }
