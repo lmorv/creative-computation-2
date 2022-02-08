@@ -7,8 +7,12 @@ A program about popping bubbles with your index finger using the computer's came
 
 "use strict";
 
+
+//
+
+let state = `loading`; // possible states are: loading, running
 // var to store the users web cam:
-let video = `undefined`;
+let video;
 // the Handpose model:
 let handpose = `undefined`;
 // the current set of predictions:
