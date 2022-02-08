@@ -13,12 +13,29 @@ A program about popping bubbles with your index finger using the computer's came
 let state = `loading`; // possible states are: loading, running
 // var to store the users web cam:
 let video;
-// the Handpose model:
-let handpose = `undefined`;
+// name of the model
+let modelName = `Handpose`;
+
+// the Handpose model object:
+let handpose;
 // the current set of predictions:
 let predictions = [];
+
 // the bubble
 let bubble = undefined;
+// the pin
+let pin = {
+  tip: {
+    x: undefined,
+    y: undefined
+  },
+  head: {
+    x: undefined,
+    y: undefined,
+    size: 20
+  }
+};
+
 /**
 Description of setup
 */
