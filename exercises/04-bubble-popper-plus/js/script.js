@@ -37,7 +37,7 @@ let pin = {
 };
 
 /**
-Description of setup
+Initializes the webcam and the Handpose, also creates the bubble objectS
 */
 function setup() {
   createCanvas(640, 480);
