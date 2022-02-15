@@ -20,7 +20,6 @@ let sevenSyllableLines = [
   `The autum streatches its legs`,
   `Nothing can hurt you`,
   `They will not come back again`
-
 ];
 
 let line1 = random(fiveSyllableLines);

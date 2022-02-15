@@ -2,14 +2,7 @@
 Topological Anomaly sample gathering
 Leonardo Morales
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
-
-*Callbacks?
-  a callback is sinonimus with an event handler. function callbacks and event handlers are distinct from functions writen as instantaneous instructions,that arent waiting for some condition or event to happen in order to execute the code within the function.
-
-*Arrow functions?
-  arrow functions are abreviated anonimus functions.
+Based on the Southern Reach trilogy by Jeff Vandemeer. Uses the lighthouse keeper's speech written by Jeff.
 */
 
 "use strict";
@@ -94,9 +87,7 @@ function draw() {
 }
 
 function mousePressed() {
-  setTimeout(function () {
-    textVisible = true;
-  }, 1000);
+  if
 }
 
 // function toggleText() {}
