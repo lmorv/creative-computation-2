@@ -13,6 +13,7 @@ author, and this description to match your project!
 */
 
 "use strict";
+
 let littanyLines = [
   `Where lies the strangling fruit that came from the hand of the sinner`,
   `I shall bring forth the seeds of the dead`,
@@ -58,7 +59,9 @@ let littanyLines = [
   `and in the presence of the strangling fruit,`,
   `its dark flame shall acquire`,
   `every part of you that remains.`
-]
+];
+
+let state = `briefing`; // possible states are: briefing, sampleGathering, baseCamp
 
 /**
 Description of preload
@@ -71,24 +74,23 @@ function preload() {
 Description of setup
 */
 function setup() {
-  createCanvas(500, 500);
+  // createCanvas(500, 500);
 }
 
 
 /**
-Description of draw()
+draw() handles the program's state change and calls the corresponding state functions
 */
 function draw() {
   background(0);
 
-  if (textVisible === true) {
-    push();
-    textAlign(CENTER);
-    textSize(50);
-    fill(255);
-    text(`Showing Text`, width/2,height/2);
-    pop();
-  };
+  if (state === `briefing`) {
+    brief();
+  } else if (state === `sampleGathering`) {
+    sampleGathering();
+  } else if (state == `baseCamp`) {
+    baseCamp();
+  }
 }
 
 function mousePressed() {
