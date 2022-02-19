@@ -71,6 +71,10 @@ setup() creates the canvas.
 */
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
+
+  if (annyang) {
+   annyang.start();
+ }
 }
 
 
@@ -121,10 +125,19 @@ function brief() {
 sampleGathering() contains all code relevant to the sample gathering stage.
 */
 function sampleGathering() {
+  let verticalPos = 30;
+  let horizontalPos = windowWidth /2;
+
+
   push();
   fill(255);
-  textAlign(CENTER, CENTER);
-  text(`gather samples`, windowWidth / 2, windowHeight / 2);
+  textAlign(CENTER,CENTER);
+
+  for (let i = 0; i < littanyLines.length; i++) {
+    text(littanyLines[i], horizontalPos, verticalPos);
+    verticalPos += 20;
+  };
+
   pop();
 }
 
