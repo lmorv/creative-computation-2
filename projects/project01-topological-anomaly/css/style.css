@@ -9,7 +9,7 @@ Also hides overflow.
 
 **********************************************/
 
-body {
+html, body {
   padding: 0;
   margin: 0;
   display: grid; /* Set up the grid and justify/align to center */
@@ -17,4 +17,8 @@ body {
   align-content: center;
   height: 100vh; /* Body is the height of the viewport */
   overflow: hidden; /* Hide anything that goes off the window size */
+}
+
+canvas {
+  display: block;
 }

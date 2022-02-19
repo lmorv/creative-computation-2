@@ -54,6 +54,10 @@ let littanyLines = [
   `every part of you that remains.`
 ];
 
+let currentLittany = [];
+
+
+
 let state = `briefing`; // possible states are: briefing, sampleGathering, baseCamp
 
 /**
@@ -67,7 +71,7 @@ function preload() {
 Description of setup
 */
 function setup() {
-  // createCanvas(500, 500);
+canvas = createCanvas(windowWidth, windowHeight);
 }
 
 
@@ -76,6 +80,7 @@ draw() handles the program's state change and calls the corresponding state func
 */
 function draw() {
   background(0);
+  updateCanvasSize();
 
   if (state === `briefing`) {
     brief();
@@ -86,16 +91,41 @@ function draw() {
   }
 }
 
-function brief() {
+/**
 
+*/
+function updateCanvasSize() {
+  // Set the canvas's CSS width and height properties to the new values
+let currentWidth = undefined;
+let currentHeight = undefined;
+
+currentWidth = windowWidth;
+currentHeight = windowHeight;
+
+  canvas.elt.style.width = `${currentWidth}px`;
+  canvas.elt.style.height = `${currentHeight}px`;
+}
+
+/**
+
+*/
+function brief() {
+push();
+textAlign(CENTER, CENTER);
+text(`You are the biologist in the scouting mission into Area X conducted by the Southern Reach. [...]`, windowWidth/2, windowHeight /2);
+pop();
 }
 
 function sampleGathering() {
-
+  push();
+  text(``);
+  pop();
 }
 
 function baseCamp() {
-
+  push();
+  text(``);
+  pop();
 }
 
 function mousePressed() {
