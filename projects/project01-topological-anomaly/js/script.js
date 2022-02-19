@@ -86,6 +86,18 @@ function draw() {
   }
 }
 
+function brief() {
+
+}
+
+function sampleGathering() {
+
+}
+
+function baseCamp() {
+
+}
+
 function mousePressed() {
   if
 }
