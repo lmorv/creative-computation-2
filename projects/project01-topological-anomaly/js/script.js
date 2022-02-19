@@ -56,14 +56,13 @@ let littanyLines = [
 
 let currentLittany = [];
 
-
-
-let state = `briefing`; // possible states are: briefing, sampleGathering, baseCamp
+let state = `brief`; // possible states are: brief, sampleGathering, baseCamp
 
 /**
 Description of preload
 */
 function preload() {
+
 }
 
 
@@ -71,7 +70,7 @@ function preload() {
 Description of setup
 */
 function setup() {
-canvas = createCanvas(windowWidth, windowHeight);
+  canvas = createCanvas(windowWidth, windowHeight);
 }
 
 
@@ -82,7 +81,7 @@ function draw() {
   background(0);
   updateCanvasSize();
 
-  if (state === `briefing`) {
+  if (state === `brief`) {
     brief();
   } else if (state === `sampleGathering`) {
     sampleGathering();
@@ -96,11 +95,11 @@ function draw() {
 */
 function updateCanvasSize() {
   // Set the canvas's CSS width and height properties to the new values
-let currentWidth = undefined;
-let currentHeight = undefined;
+  let currentWidth = undefined;
+  let currentHeight = undefined;
 
-currentWidth = windowWidth;
-currentHeight = windowHeight;
+  currentWidth = windowWidth;
+  currentHeight = windowHeight;
 
   canvas.elt.style.width = `${currentWidth}px`;
   canvas.elt.style.height = `${currentHeight}px`;
@@ -110,26 +109,47 @@ currentHeight = windowHeight;
 
 */
 function brief() {
-push();
-textAlign(CENTER, CENTER);
-text(`You are the biologist in the scouting mission into Area X conducted by the Southern Reach. [...]`, windowWidth/2, windowHeight /2);
-pop();
+  push();
+  textAlign(CENTER, CENTER);
+  text(`You are the biologist in the scouting mission into Area X conducted by the Southern Reach. [...]`, windowWidth / 2, windowHeight / 2);
+  pop();
 }
 
 function sampleGathering() {
   push();
-  text(``);
+  textAlign(CENTER, CENTER);
+  text(`gather samples`, windowWidth / 2, windowHeight / 2);
   pop();
 }
 
+/**
+
+*/
 function baseCamp() {
   push();
-  text(``);
+  textAlign(CENTER, CENTER);
+  text(`Base camp`, windowWidth / 2, windowHeight / 2);
   pop();
 }
 
+/**
+
+*/
 function mousePressed() {
-  if
+  if (state === `brief`) {
+    state = `sampleGathering`;
+  };
 }
 
-// function toggleText() {}
+/**
+
+*/
+function keyPressed() {
+  if (keyCode === ENTER && state === `sampleGathering`) {
+    state = `baseCamp`;
+  } else if (keyCode === ENTER && state === `baseCamp`) {
+    state = `sampleGathering`;
+  } else if (keyCode === ESCAPE) {
+    state = `brief`;
+  }
+}
