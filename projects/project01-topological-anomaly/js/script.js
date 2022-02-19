@@ -128,17 +128,19 @@ function sampleGathering() {
   let verticalPos = 30;
   let horizontalPos = windowWidth /2;
 
-
   push();
   fill(255);
   textAlign(CENTER,CENTER);
 
   for (let i = 0; i < littanyLines.length; i++) {
-    text(littanyLines[i], horizontalPos, verticalPos);
-    verticalPos += 20;
+  //   let newSpan = document.createElement(`span`);
+  //   newSpan.innerHTML = littanyLines[i];
+  //   document.getElementById(`fullLitany`).appendChild(newSpan);
+  text(littanyLines[i], horizontalPos, verticalPos);
+  verticalPos += 20;
   };
-
   pop();
+
 }
 
 /**
