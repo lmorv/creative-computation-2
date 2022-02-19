@@ -152,6 +152,26 @@ function baseCamp() {
   textAlign(CENTER, CENTER);
   text(`Base camp`, windowWidth / 2, windowHeight / 2);
   pop();
+
+
+}
+
+function newPoemLine(incancation) {
+
+}
+
+function drop(startingBit) {
+  let command = {};
+  let commandText = `${startingBit} *incantation`;
+  command[commandText] = function(incantation) {
+    let index = poem.indexOf(startingBit);
+    poem.splice(index + 1, 0, incantation);
+  };
+  annyang.addCommands(command);
+}
+
+function newLine(startingBit, newBit) {
+
 }
 
 /**
