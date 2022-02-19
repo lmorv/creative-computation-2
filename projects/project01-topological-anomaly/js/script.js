@@ -67,7 +67,7 @@ function preload() {
 
 
 /**
-Description of setup
+setup() creates the canvas.
 */
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight);
@@ -75,11 +75,10 @@ function setup() {
 
 
 /**
-draw() handles the program's state change and calls the corresponding state functions
+draw() handles the program's state change and calls the corresponding state functions.
 */
 function draw() {
   background(0);
-  updateCanvasSize();
 
   if (state === `brief`) {
     brief();
@@ -88,10 +87,12 @@ function draw() {
   } else if (state == `baseCamp`) {
     baseCamp();
   }
+
+  updateCanvasSize(); // Dynamically rezise canvas to fit the window
 }
 
 /**
-
+updateCanvasSize() resizes the canvas element ti fit the entire window during the draw loop.
 */
 function updateCanvasSize() {
   // Set the canvas's CSS width and height properties to the new values
@@ -106,34 +107,40 @@ function updateCanvasSize() {
 }
 
 /**
-
+brief() contains all code relevant to the briefing stage.
 */
 function brief() {
   push();
+  fill(255);
   textAlign(CENTER, CENTER);
   text(`You are the biologist in the scouting mission into Area X conducted by the Southern Reach. [...]`, windowWidth / 2, windowHeight / 2);
   pop();
 }
 
+/**
+sampleGathering() contains all code relevant to the sample gathering stage.
+*/
 function sampleGathering() {
   push();
+  fill(255);
   textAlign(CENTER, CENTER);
   text(`gather samples`, windowWidth / 2, windowHeight / 2);
   pop();
 }
 
 /**
-
+baseCamp() contains all code relevant to the base camp stage, handles anyang! behaviour.
 */
 function baseCamp() {
   push();
+  fill(255);
   textAlign(CENTER, CENTER);
   text(`Base camp`, windowWidth / 2, windowHeight / 2);
   pop();
 }
 
 /**
-
+mousePressed() handles state change from the briefing to the sample gathering stage.
 */
 function mousePressed() {
   if (state === `brief`) {
@@ -142,7 +149,7 @@ function mousePressed() {
 }
 
 /**
-
+keyPressed() handles state change bwteen sample gathering and base camp stages and program reset from either state.
 */
 function keyPressed() {
   if (keyCode === ENTER && state === `sampleGathering`) {
