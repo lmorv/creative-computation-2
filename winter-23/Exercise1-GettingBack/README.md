@@ -1,3 +1,3 @@
-# Template p5 project
+# Getting Back Into Code
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+This is a warm up exercise to kick off the semester. I'ts about remembering how to code! I'm gonna try to make a tick Tack Toe game.
