@@ -1,3 +1,3 @@
-# Template p5 project
+# This is Creative Computation II Winter 2023 baby!
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+The repo contains all the mega fun projects for the class.
