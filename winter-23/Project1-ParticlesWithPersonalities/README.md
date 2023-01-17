@@ -1,3 +1,17 @@
-# Template p5 project
+# Particles With Personalities
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+The theme of this particle system is:
+
+## Lost in the Forest
+
+### Ideation:
+
+- Mouse tracking - getting lost or trying to find your way.
+- revealing parts of an environment.
+- Moss, tree bark, fairy sparkles - bright and magical.
+- Spotlight of a flashlight in the darkness.
+- Parallax of trees in the darkness.
+- Shadow and light particles - occlusive VS light influence.
+- Battlefront, Ewok Hunt - Fairy Fountain, The Legend of Zelda.
+
+
