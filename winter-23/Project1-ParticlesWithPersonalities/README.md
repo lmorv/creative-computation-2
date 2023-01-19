@@ -14,4 +14,11 @@ The theme of this particle system is:
 - Shadow and light particles - occlusive VS light influence.
 - Battlefront, Ewok Hunt - Fairy Fountain, The Legend of Zelda.
 
+### Particle types:
+
+- Tendrils.
+- Blotches.
+- Square 'brush strokes'
+- Sparkles.
+
 
