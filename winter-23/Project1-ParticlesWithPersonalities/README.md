@@ -2,9 +2,11 @@
 
 The theme of this particle system is:
 
-## Lost in the Forest
+# Lost in the Forest
 
-### Ideation:
+## Ideation:
+
+### Brainstorm:
 
 - Mouse tracking - getting lost or trying to find your way.
 - revealing parts of an environment.
@@ -13,12 +15,16 @@ The theme of this particle system is:
 - Parallax of trees in the darkness.
 - Shadow and light particles - occlusive VS light influence.
 - Battlefront, Ewok Hunt - Fairy Fountain, The Legend of Zelda.
+- color changes over time - day and night - weather conditions.
+- fire, blood, water.
 
 ### Particle types:
 
 - Tendrils.
 - Blotches.
-- Square 'brush strokes'
+- Square 'brush strokes'.
 - Sparkles.
 
+### Concept art:
 
+![Art!](assets/images/particles-concept.png)
