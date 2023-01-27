@@ -1,9 +1,9 @@
 /**
-Title of Project
-Author Name
+Lost in the Forest
+Leo Morales
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+A particle system trying to evoke a sense of wander and danger in the forest as time passes, the environment changes nd weather conditions evolve.
+
 */
 
 "use strict";

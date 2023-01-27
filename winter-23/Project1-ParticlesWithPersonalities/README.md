@@ -1,10 +1,10 @@
 # Particles With Personalities
 
-The theme of this particle system is:
+The theme of this particle system is: 
 
 # Lost in the Forest
 
-## Ideation:
+## Ideation
 
 ### Brainstorm:
 
@@ -18,12 +18,23 @@ The theme of this particle system is:
 - color changes over time - day and night - weather conditions.
 - fire, blood, water.
 
-### Particle types:
+### Particle types and behavior:
 
 - Tendrils.
+    - originating from a point. trasform(), rotate().
+    - drawVector, Bezier curves, svg library for p5.
+
 - Blotches.
+    - Random sizes, clumped together.
+
 - Square 'brush strokes'.
-- Sparkles.
+    - Emanating from a point at an angle,
+
+- Sparkles. 
+    - follow the mouse, change from magical to fire-y.
+
+- background gradient. 
+    - millis, timers, change over time.
 
 ### Concept art:
 
