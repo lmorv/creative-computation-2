@@ -4,16 +4,19 @@ Leo Morales
 
 A particle system trying to evoke a sense of wander and danger in the forest. As time passes the environment changes and weather conditions evolve.
 
-- Gradient background
+- Background color change over time.
+- 
 */
 
 "use strict";
 
-let water = {
-    r: 30,
-    g: 100,
-    b: 200,
-};
+// I don't know if i'll use these color objects...
+
+//  {
+//     r: 30,
+//     g: 100,
+//     b: 200,
+// };
 
 let fire = {
     r: 200,
@@ -33,7 +36,13 @@ let forest = {
     b: 100,
 };
 
-let milliseconds = Millis();
+let state = 'green'; // possible states are "green", "blue", "red" 
+
+let enviroColor = {
+    r: 10,
+    g: 200,
+    b: 10,
+};
 
 /**
 Description of preload
@@ -49,7 +58,9 @@ function preload() {
 Description of setup
 */
 function setup() {
-    
+    let water = color(30,100,200);
+    createCanvas(windowWidth, windowHeight); 
+    let milliseconds = millis();
 }
 
 
@@ -57,11 +68,60 @@ function setup() {
 Description of draw()
 */
 function draw() {
-    createCanvas(windowWidth, windowHeight); // Creating canvas on here so that the height updates when re-sizing widow.
+    let water = color(30,100,200);
+    background(water);
+    let milliseconds = millis();
 
-    background(30,200,100);
+    // setInterval(changeColor, 2000);
+    // setInterval(turnGreen, 4000);
+    // setInterval(turnRed, 6000);
 
-    print(milliseconds);
+
+//    console.log(enviroColor.b);
+}
+
+ 
+function changeColor() {
+    // console.log('changing color!');
+    
+    if (enviroColor.b < 200 && state == 'green') {           // turn canvas blue
+        enviroColor.b = enviroColor.b + 1;
+
+        if (enviroColor.b >= 200) {
+        state = 'blue';
+        }    
+
+        enviroColor.g = enviroColor.g - 1;
+        enviroColor.r = enviroColor.r - 1;
+
+    } else if (enviroColor.r < 200 && state == 'blue') {     // Turn canvas red
+        enviroColor.r = enviroColor.r + 1;
+
+        if (enviroColor.r >= 200) {
+            state = 'red';
+        }
+
+        enviroColor.g = enviroColor.g - 1;
+        enviroColor.b = enviroColor.b - 1;
+
+    } else if (enviroColor.g < 200 && state == 'red') {         // Turn canvas green
+        enviroColor.g = enviroColor.g + 1;
+
+        if (enviroColor.g >= 200) {
+            state = 'green';
+        }
+
+        enviroColor.r = enviroColor.r - 1;
+        enviroColor.b = enviroColor.b - 1;
+    }
+}
+
+function turnGreen() {
+    
+}
+
+function turnRed() {
+    
 }
 
 class Tendril {
