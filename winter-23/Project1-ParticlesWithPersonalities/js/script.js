@@ -42,6 +42,7 @@ function draw() {
   
     
     sparkle.display();
+    sparkle.update();
     
     setInterval(changeColor, 4000);
 //    console.log(enviroColor.b);
@@ -86,9 +87,16 @@ class Sparkle {
     display () {
         //display some shiny sparks
         noStroke();
-        fill(255);
+        fill(255, 255, 10, this.lifetime);
+        rectMode(CENTER);
         square(this.x,this.y, this.dim, 40, 0, 40, 0); // Square with some rounded corners.
-        
+    }
+
+    update() {
+        this.x = mouseX;
+        this.y = mouseY;
+
+        this.lifetime -= 0.1;
     }
 }
 
