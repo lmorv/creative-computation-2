@@ -2,7 +2,7 @@
 Tips & Tricks for Particles
 Leo Morales
 
-Class exercise expanding on techniques to work with particle systems.
+Class exercise, and online explorations expanding on techniques to work with particle systems.
 */
 
 "use strict";
@@ -12,7 +12,7 @@ Class exercise expanding on techniques to work with particle systems.
 Description of preload
 */
 function preload() {
-
+    
 }
 
 
@@ -20,7 +20,7 @@ function preload() {
 Description of setup
 */
 function setup() {
-
+    createCanvas(windowWidth, windowHeight); 
 }
 
 
@@ -28,5 +28,6 @@ function setup() {
 Description of draw()
 */
 function draw() {
-
+    let water = color(30,100,200);
+    background(water);
 }
