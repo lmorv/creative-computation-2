@@ -10,15 +10,17 @@ A particle system trying to evoke a sense of wander and danger in the forest. As
 
 "use strict";
 
-let state = 'green'; // possible states are "green", "blue", "red" NOT USED
-
 let sparkle = []; 
 
+let wanderer;
+
+// looks like I gotta declare these variables globally, they are used by the Wanderer class when setting the position in the constructor and in the move() method.
+let xOffset1 = 0; // offset on the horizontal axis of the Perlin Noise space.
+let xOffset2 = 10000; // Second offset in Noise space.
+
 /**
-Description of preload
+Preload does nothing right now.
 */
-
-
 function preload() {
 
 }
@@ -31,7 +33,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight); 
 
     sparkle = new Sparkle(width/2, height/2);
-
+    
 }
 
 
@@ -39,12 +41,17 @@ function setup() {
 Description of draw()
 */
 function draw() {
-  
-    
+    let forest = color(30,200,100);
+    background(forest);
+
     sparkle.display();
     sparkle.update();
     
-    setInterval(changeColor, 4000);
+    wanderer = new Wanderer(); // gotta create a new wanderer every frame for it to move.
+    wanderer.move();
+    wanderer.display();
+
+    // setInterval(changeColor, 4000);
 //    console.log(enviroColor.b);
 }
 
@@ -54,7 +61,7 @@ function changeColor() {
 
     let water = color(30,100,200);
     let fire = color(200,30,100);
-    let forest = color(30,200,100);
+    // let forest = color(30,200,100);
     let earth = color(165,42,42);
 
     let currentColor = forest;
@@ -100,10 +107,34 @@ class Sparkle {
     }
 }
 
+class Wanderer {
+    constructor() {
+        
+        this.x = map(noise(xOffset1), 0, 1, 0, width);  // Initial x position taking a Perlin seed from 0 to 1 mapped onto the width of the canvas.
+        this.y = map(noise(xOffset2), 0, 1, 0, height); // initial y position.
+
+        this.speed = 0.01;
+    }
+
+    display() {
+        push();
+        noStroke();
+        fill(200,50,70);
+        ellipse(this.x, this.y, 44, 40);
+        pop();
+    }
+
+    move() {
+        xOffset1 += this.speed; // using the same speed value for x and y movement. 
+        xOffset2 += this.speed;
+    }
+}
+
 class Tendril {
     constructor() {
         this.x = width/2;
         this.y = height/2;
+        
     }
 
     display () {
