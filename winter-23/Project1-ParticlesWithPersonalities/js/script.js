@@ -5,14 +5,14 @@ Leo Morales
 A particle system trying to evoke a sense of wander and danger in the forest. As time passes the environment changes and weather conditions evolve.
 
 - Background color change over time.
-- 
+- Sparkles that emit from the mouse position.
 */
 
 "use strict";
 
 let state = 'green'; // possible states are "green", "blue", "red" NOT USED
 
-let sparkle = [];
+let sparkle = []; 
 
 /**
 Description of preload
@@ -96,7 +96,7 @@ class Sparkle {
         this.x = mouseX;
         this.y = mouseY;
 
-        this.lifetime -= 0.1;
+        this.lifetime -= 0.5;
     }
 }
 
