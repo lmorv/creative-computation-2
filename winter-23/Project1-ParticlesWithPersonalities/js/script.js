@@ -119,7 +119,7 @@ class Wanderer {
     display() {
         push();
         noStroke();
-        fill(200,50,70);
+        fill(200,50,100);
         ellipse(this.x, this.y, 44, 40);
         pop();
     }
