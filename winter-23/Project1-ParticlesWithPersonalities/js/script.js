@@ -2,7 +2,10 @@
 Lost in the Forest
 Leo Morales
 
+Everything adapted to be object oriented from The Nature of Code 2 playlist on youtube: https://youtu.be/70MQ-FugwbI
+
 A particle system trying to evoke a sense of wander and danger in the forest. As time passes the environment changes and weather conditions evolve.
+
 
 - Background color change over time.
 - Sparkles that emit from the mouse position.
@@ -13,6 +16,10 @@ A particle system trying to evoke a sense of wander and danger in the forest. As
 let sparkle = []; 
 
 let wanderer;
+
+let terrain = [];
+
+let terrainNum = 4;
 
 // looks like I gotta declare these variables globally, they are used by the Wanderer class when setting the position in the constructor and in the move() method.
 let xOffset1 = 0; // offset on the horizontal axis of the Perlin Noise space.
@@ -33,6 +40,16 @@ function setup() {
     createCanvas(windowWidth, windowHeight); 
 
     sparkle = new Sparkle(width/2, height/2);
+
+    // set up terrain graphs:
+       let bump = 0.002;
+       let speed = 0.015;
+       let start = 0;
+
+    for (let i = 0; i < terrainNum; i++) {
+        terrain = new Terrain(bump, speed, start)[i];
+        // start += 1;
+    }
     
 }
 
@@ -44,9 +61,17 @@ function draw() {
     let forest = color(30,200,100);
     background(forest);
 
+    // Handle terrain:
+    for (let i = 0; i < terrain; i++ ) {
+
+        terrain[i].displayAndPan();
+    }
+
+    // Handle sparkle:
     sparkle.display();
     sparkle.update();
-    
+
+    // Handle wanderer:
     wanderer = new Wanderer(); // gotta create a new wanderer every frame for it to move.
     wanderer.move();
     wanderer.display();
@@ -55,30 +80,35 @@ function draw() {
 //    console.log(enviroColor.b);
 }
 
-
-function changeColor() {
-    console.log('changing color!'); 
-
-    let water = color(30,100,200);
-    let fire = color(200,30,100);
-    // let forest = color(30,200,100);
-    let earth = color(165,42,42);
-
-    let currentColor = forest;
-    
-    background(currentColor);
-
-    if(currentColor === water ) {
-        let counter = 4;
-
-        for(let i = 0; i < counter; i++) {  
-                let counterToRange = map(i,0, counter, 0, 1); // I think this should convert the range of 0 to the counter's value to a 0 to 1 range...
-                lerpColor(water,forest, i); // and using the mapped value here should increase the lerp amount for every tick of the counter... in theory.
-            }
+class Terrain {
+    constructor(bump, speed, start) {
+        this.increment = bump; 0.002;   // 'Bumpy-ness' of the perlin noise wave. A step increment in perlin noise space
+        this.timeIncrement = speed; 0.015; // speed of panning.
+        this.terrainStart = start; 0; // start seed value for a newly created noise wave.
     }
-   
-}
 
+    displayAndPan() {
+        push();
+        noFill();
+        stroke(255);
+        beginShape();
+
+        let xOffset3 = this.terrainStart;  // declaring another offset in perlin space and immediately assigning it to the terrain start seed.
+        for (let x = 0; x < width; x++) {
+
+            let y = noise(xOffset3) * height;
+            vertex(x, y);
+
+            xOffset3 += this.increment;
+
+        }
+
+         endShape();
+         this.terrainStart += this.timeIncrement;
+        pop();
+    }
+
+}
 
 class Sparkle {
     constructor(x,y) {
@@ -163,5 +193,27 @@ class Quad {
 
     display () {
             //display some irregular parallelograms
+    }
+}
+
+function changeColor() {
+    console.log('changing color!'); 
+
+    let water = color(30,100,200);
+    let fire = color(200,30,100);
+    // let forest = color(30,200,100);
+    let earth = color(165,42,42);
+
+    let currentColor = forest;
+    
+    background(currentColor);
+
+    if(currentColor === water ) {
+        let counter = 4;
+
+        for(let i = 0; i < counter; i++) {  
+                let counterToRange = map(i,0, counter, 0, 1); // I think this should convert the range of 0 to the counter's value to a 0 to 1 range...
+                lerpColor(water,forest, i); // and using the mapped value here should increase the lerp amount for every tick of the counter... in theory.
+            }
     }
 }
