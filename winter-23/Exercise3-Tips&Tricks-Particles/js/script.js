@@ -16,7 +16,8 @@ let sparkle = [];
 let xOffset1 = 0; // offset on the horizontal axis of the Perlin Noise space.
 let xOffset2 = 10000;
 
-let terrain;
+let terrain = [];
+let terrainNum = 3;
 let terrain2;
 /**
 Description of preload
@@ -34,8 +35,13 @@ function setup() {
     let bump = 0.002;
     let speed = 0.015;
     let start = 0;
+    for (let i = 0; i < terrainNum; i++) {
 
-    terrain = new Terrain(bump, speed, start);
+        terrain[i] = new Terrain(bump, speed, start);
+        speed += 0.0001;
+        start += 1;
+        bump -= 0.0004; 
+    }
 
     terrain2 = new Terrain(bump, speed + 0.01, start + 1);
 }
@@ -48,7 +54,10 @@ function draw() {
     background(water);
 
     // Handle terrain:
-    terrain.displayAndPan();
+    for (let i = 0; i < terrain.length; i++) {
+
+        terrain[i].displayAndPan();
+    }
 
     terrain2.displayAndPan();
 
