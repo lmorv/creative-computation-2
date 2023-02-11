@@ -49,7 +49,7 @@ function setup() {
     for (let i = 0; i < terrainNum; i++) {
         terrain[i] = new Terrain(bump, speed, start);
         start += 1;
-        speed += 0.005;
+        speed += 0.002;
         bump -= 0.0002;
     }
     
