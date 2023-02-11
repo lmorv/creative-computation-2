@@ -19,7 +19,7 @@ let wanderer;
 
 let terrain = [];
 
-let terrainNum = 4; // number of terrain graphs displayed onscreen.
+let terrainNum = 6; // number of terrain graphs displayed onscreen.
 
 // looks like I gotta declare these variables globally, they are used by the Wanderer class when setting the position in the constructor and in the move() method.
 let xOffset1 = 0; // offset on the horizontal axis of the Perlin Noise space.
@@ -47,8 +47,10 @@ function setup() {
        let start = 0;
 
     for (let i = 0; i < terrainNum; i++) {
-        terrain = new Terrain(bump, speed, start)[i];
-        // start += 1;
+        terrain[i] = new Terrain(bump, speed, start);
+        start += 1;
+        speed += 0.005;
+        bump -= 0.0002;
     }
     
 }
@@ -62,7 +64,7 @@ function draw() {
     background(forest);
 
     // Handle terrain:
-    for (let i = 0; i < terrain; i++ ) {
+    for (let i = 0; i < terrain.length; i++ ) {
 
         terrain[i].displayAndPan();
     }
@@ -82,9 +84,9 @@ function draw() {
 
 class Terrain {
     constructor(bump, speed, start) {
-        this.increment = bump; 0.002;   // 'Bumpy-ness' of the perlin noise wave. A step increment in perlin noise space
-        this.timeIncrement = speed; 0.015; // speed of panning.
-        this.terrainStart = start; 0; // start seed value for a newly created noise wave.
+        this.increment = bump;  // 'Bumpy-ness' of the perlin noise wave. A step increment in perlin noise space
+        this.timeIncrement = speed; // speed of panning.
+        this.terrainStart = start; // start seed value for a newly created noise wave.
     }
 
     displayAndPan() {
@@ -107,7 +109,6 @@ class Terrain {
          this.terrainStart += this.timeIncrement;
          pop();
     }
-
 }
 
 class Sparkle {
