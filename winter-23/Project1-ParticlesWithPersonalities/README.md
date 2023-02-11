@@ -1,5 +1,9 @@
 # Particles With Personalities
 
+Link to this project in repo: https://github.com/lmorv/creative-computation-2/tree/main/winter-23/Project1-ParticlesWithPersonalities
+
+Project on the web: https://lmorv.github.io/creative-computation-2/winter-23/Project1-ParticlesWithPersonalities/
+
 The theme of this particle system is: 
 
 # Lost in the Forest
