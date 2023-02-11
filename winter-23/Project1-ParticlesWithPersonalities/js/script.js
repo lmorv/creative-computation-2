@@ -19,7 +19,7 @@ let wanderer;
 
 let terrain = [];
 
-let terrainNum = 4;
+let terrainNum = 4; // number of terrain graphs displayed onscreen.
 
 // looks like I gotta declare these variables globally, they are used by the Wanderer class when setting the position in the constructor and in the move() method.
 let xOffset1 = 0; // offset on the horizontal axis of the Perlin Noise space.
@@ -34,7 +34,7 @@ function preload() {
 
 
 /**
-Description of setup
+setup() creates program objects and declares some starting variables for them.
 */
 function setup() {
     createCanvas(windowWidth, windowHeight); 
@@ -55,7 +55,7 @@ function setup() {
 
 
 /**
-Description of draw()
+draw() handles the method calling for game objects, and sets a background color.
 */
 function draw() {
     let forest = color(30,200,100);
@@ -77,7 +77,7 @@ function draw() {
     wanderer.display();
 
     // setInterval(changeColor, 4000);
-//    console.log(enviroColor.b);
+
 }
 
 class Terrain {
@@ -105,7 +105,7 @@ class Terrain {
 
          endShape();
          this.terrainStart += this.timeIncrement;
-        pop();
+         pop();
     }
 
 }
