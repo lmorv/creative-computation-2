@@ -13,12 +13,20 @@ Questions:
 
 let sparkle = [];
 
+let randomWalker;
+
 let xOffset1 = 0; // offset on the horizontal axis of the Perlin Noise space.
 let xOffset2 = 10000;
 
 let terrain = [];
 let terrainNum = 3;
 let terrain2;
+
+let increment2d = 0.01; // increment used in 2d perlin noise visualization.
+
+var x;
+var y;
+
 /**
 Description of preload
 */
@@ -32,6 +40,10 @@ Description of setup
 function setup() {
     createCanvas(windowWidth, windowHeight);
 
+    randomWalker = new RandomWalker(width/2, height/2);
+
+    pixelDensity(1); // Need this to properly use loadPixels() later, to account for monitors with high pixel density.
+    // set up terrains:
     let bump = 0.002;
     let speed = 0.015;
     let start = 0;
@@ -42,32 +54,94 @@ function setup() {
         start += 1;
         bump -= 0.0004; 
     }
-
+    // Lonely terrain instance:
     terrain2 = new Terrain(bump, speed + 0.01, start + 1);
+
 }
 
 /**
 Description of draw()
 */
 function draw() {
+    
     let water = color(30,100,200);
     background(water);
 
-    // Handle terrain:
-    for (let i = 0; i < terrain.length; i++) {
+    randomWalker.displayAndMove();
 
+    // Perlin noise in 2 dimentions, pretty slow:
+    // draw2dNoise();
+    
+    // Handle terrains:
+    for (let i = 0; i < terrain.length; i++) {
         terrain[i].displayAndPan();
     }
-
+    // another terrain all on it's own:
     terrain2.displayAndPan();
 
     // Handle wanderer:
     let wanderer = new Wanderer();
     wanderer.display();
     wanderer.move();
+}
 
-   
-    
+function draw2dNoise() {
+    // draw 2d noise:
+    // noiseDetail(80);
+    var yOff = 0;
+    loadPixels();
+    for (var y = 0; y < height; y++) {
+        var xOff = 0;
+        for (let x = 0; x < width; x++) {
+            var index = (x + y * width) * 4;
+            var r = noise(xOff, yOff) * 255;
+            pixels[index + 0] = r;
+            pixels[index + 1] = r;
+            pixels[index + 2] = r;
+            pixels[index + 3] = 255;
+            xOff += increment2d;
+        }
+        yOff += increment2d;
+    }
+    updatePixels();
+    // noloop();
+}
+
+class RandomWalker {
+    constructor (x, y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    displayAndMove() {
+        push()
+        stroke(255);
+        strokeWeight(5);
+        point(this.x, this.y);
+        pop();
+
+        var randNum = floor(random(4));
+
+        // Switch statement incoming:
+        switch (randNum) {
+            case 0:
+                // move right:
+                this.x += 1;
+                break;
+            case 1:
+                // move left:
+                this.x -= 1;
+                break;
+            case 2:
+                // move down:
+                this.y += 1;
+                break;
+            case 3:
+                // move up:
+                this.y -= 1;
+                break;
+        }
+    }
 }
 
 class Terrain {
