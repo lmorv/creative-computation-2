@@ -68,30 +68,8 @@ function draw() {
     let water = color(30,100,200);
     background(water);
 
-    let pos = createVector(width/2, height/2);
-    let mouse = createVector(mouseX, mouseY);
+    compassLine(300); // A vector pointing from the center of the canvas to the mouse. Takes an argument to set the magnitude.
     
-    let v = p5.Vector.sub(mouse, pos); // using the static function sub(), on the Vector class, to subtract two vectors and store the resulting vector in another variable.
-   
-    // manual normalization: and magnitude scaling:
-    // let m = v.mag(); // Vector magnitude.
-    // v.div(m); // divide vector by it's magnitude(aka length); making it 1.
-
-    // v.normalize(); // make vector equal to a unit vector. Equivalent to dividing ot by it's magnitude.
-    // v.mult(200); // multiply by a scalar value to give it a fixed length.
-
-    // v.normalize().mult(50); // normalize and set magnitude by 'chaining' operations.
-
-    v.setMag(300); // this normalizes and multiplies a vector by a scalar value.
-
-    // v.normalize();
-    push(); 
-    translate(width/2, height/2)
-    strokeWeight(4);
-    stroke(255,80);
-    line(0, 0, v.x, v.y);
-    pop();
-
     radialVectors();  // Draw random vectors from the center of the screen.
 
     randomWalker.displayAndMove();
@@ -110,6 +88,33 @@ function draw() {
     let wanderer = new Wanderer();
     wanderer.display();
     wanderer.move();
+}
+
+function compassLine(magnitude) {
+    let pos = createVector(width/2, height/2);
+    let mouse = createVector(mouseX, mouseY);
+    
+    let v = p5.Vector.sub(mouse, pos); // using the static function sub(), on the Vector class, to subtract two vectors and store the resulting vector in another variable.
+   
+    // manual normalization: and magnitude scaling:
+    // let m = v.mag(); // Vector magnitude.
+    // v.div(m); // divide vector by it's magnitude(aka length); making it 1.
+
+    // v.normalize(); // make vector equal to a unit vector. Equivalent to dividing ot by it's magnitude.
+    // v.mult(200); // multiply by a scalar value to give it a fixed length.
+
+    // v.normalize().mult(50); // normalize and set magnitude by 'chaining' operations.
+
+    v.setMag(magnitude); // this normalizes and multiplies a vector by a scalar value.
+
+    // v.normalize();
+    push(); 
+    translate(width/2, height/2)
+    strokeWeight(4);
+    stroke(255,80);
+    line(0, 0, v.x, v.y);
+    pop();
+
 }
 
 function radialVectors() {
