@@ -15,6 +15,8 @@ let sparkle = [];
 
 let randomWalker;
 
+let randomVector;
+
 let xOffset1 = 0; // offset on the horizontal axis of the Perlin Noise space.
 let xOffset2 = 10000;
 
@@ -56,7 +58,6 @@ function setup() {
     }
     // Lonely terrain instance:
     terrain2 = new Terrain(bump, speed + 0.01, start + 1);
-
 }
 
 /**
@@ -66,6 +67,32 @@ function draw() {
     
     let water = color(30,100,200);
     background(water);
+
+    let pos = createVector(width/2, height/2);
+    let mouse = createVector(mouseX, mouseY);
+    
+    let v = p5.Vector.sub(mouse, pos); // using the static function sub(), on the Vector class, to subtract two vectors and store the resulting vector in another variable.
+   
+    // manual normalization: and magnitude scaling:
+    // let m = v.mag(); // Vector magnitude.
+    // v.div(m); // divide vector by it's magnitude(aka length); making it 1.
+
+    // v.normalize(); // make vector equal to a unit vector. Equivalent to dividing ot by it's magnitude.
+    // v.mult(200); // multiply by a scalar value to give it a fixed length.
+
+    // v.normalize().mult(50); // normalize and set magnitude by 'chaining' operations.
+
+    v.setMag(300); // this normalizes and multiplies a vector by a scalar value.
+
+    // v.normalize();
+    push(); 
+    translate(width/2, height/2)
+    strokeWeight(4);
+    stroke(255,80);
+    line(0, 0, v.x, v.y);
+    pop();
+
+    radialVectors();  // Draw random vectors from the center of the screen.
 
     randomWalker.displayAndMove();
 
@@ -83,6 +110,20 @@ function draw() {
     let wanderer = new Wanderer();
     wanderer.display();
     wanderer.move();
+}
+
+function radialVectors() {
+    push();
+    translate(mouseX, mouseY);
+
+    // let vec = createVector(random(-500, 500), random(-500, 500)); // Create random vector on square bounds
+    let vec = p5.Vector.random2D(); // create random unit vector. Static function random2d returns a random vector of magnitude 1 (px). 
+    vec.mult(random(100, 400)); //multiply unit vector by a scalar value 
+
+    strokeWeight(4);
+    stroke(255, 70);
+    line(0, 0, vec.x, vec.y);
+    pop();
 }
 
 function draw2dNoise() {
@@ -109,38 +150,42 @@ function draw2dNoise() {
 
 class RandomWalker {
     constructor (x, y) {
-        this.x = x;
-        this.y = y;
+        this.pos = createVector(x,y);
+        this.vel = p5.Vector.random2D(); // create random unit vector.
+        this.vel.mult(random(3)); // multiply the unit vector by a random scalar value from 0 to n.
     }
 
     displayAndMove() {
         push()
-        stroke(255);
-        strokeWeight(5);
-        point(this.x, this.y);
+        fill(0);
+        ellipse(this.pos.x, this.pos.y, 32);
         pop();
 
         var randNum = floor(random(4));
+        
+        this.pos.add(this.vel);
+        // this.pos.x += this.vel.x;
+        // this.pos.y += this.vel.y;
 
         // Switch statement incoming:
-        switch (randNum) {
-            case 0:
-                // move right:
-                this.x += 1;
-                break;
-            case 1:
-                // move left:
-                this.x -= 1;
-                break;
-            case 2:
-                // move down:
-                this.y += 1;
-                break;
-            case 3:
-                // move up:
-                this.y -= 1;
-                break;
-        }
+        // switch (randNum) {
+        //     case 0:
+        //         // move right:
+        //         this.x += 1;
+        //         break;
+        //     case 1:
+        //         // move left:
+        //         this.x -= 1;
+        //         break;
+        //     case 2:
+        //         // move down:
+        //         this.y += 1;
+        //         break;
+        //     case 3:
+        //         // move up:
+        //         this.y -= 1;
+        //         break;
+        // }
     }
 }
 
