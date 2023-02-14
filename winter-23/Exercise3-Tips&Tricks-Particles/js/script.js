@@ -158,6 +158,7 @@ class RandomWalker {
         this.pos = createVector(x,y);
         this.vel = p5.Vector.random2D(); // create random unit vector.
         this.vel.mult(random(3)); // multiply the unit vector by a random scalar value from 0 to n.
+        this.acc = p5.Vector.random2D();
     }
 
     displayAndMove() {
@@ -168,6 +169,7 @@ class RandomWalker {
 
         var randNum = floor(random(4));
         
+        this.vel.add(this.acc);
         this.pos.add(this.vel);
         // this.pos.x += this.vel.x;
         // this.pos.y += this.vel.y;
