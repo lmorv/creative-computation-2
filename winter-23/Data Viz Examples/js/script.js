@@ -15,7 +15,40 @@ function setup() {
                                 table.getString(r, 0));
                                 // Pass through the values in each row
   }
+
+  // let xPos = 0;
+  // let yPos = 0;
+
+  // for (var p = 0; p < points.length; p++ ) {
+  //   for (var r = 0; r < table.getRowCount(); r++){
+  //     yPos += 1;
+  //   }
+  //   points[p].drawBasic(xPos, yPos);
+  // }
+
+
+  for (var r = 0; r < table.getRowCount(); r++){
+      // points[r].drawBasic(r, c);
+   for (var c = 0; c < table.getColumnCount(); c++) {
+    // push();
+      // rectMode(CENTER);
+      // stroke(255);
+      // noFill();
+      fill(255)
+      rect(c, r, 10, 10);
+      // pop();
+
+      // let i = c + r * table.getColumnCount();
+      // points[c].drawBasic(r, c);
+    }
+  }
+
 }
+
+function draw() {
+  
+}
+
 class DataPoint { 
     constructor(country, name, duration, ID){ 
         // Add each data point to the object
@@ -27,11 +60,25 @@ class DataPoint {
         this.y;
     }
 
-    drawBasic(){ 
-        this.x = random(width);
-        this.y = random(height);
+    drawBasic(xPos, yPos){ 
+
+        this.x = xPos;
+        this.y = yPos;
         noStroke();
-        ellipse(random(width), random(height),int(this.duration)*3);
+
+        // Check country:
+        if (this.country === "USA") {
+          fill(255,0,0);
+        } else if (this.country === "Russia") {
+          fill(0,0,255);
+        }
+        ellipse(random(width), random(height),int(this.duration)*4);
+      
+        // Draw names:
+        textSize(10);
+        fill(255);
+        textAlign(CENTER,CENTER);
+        text(this.name, this.x, this.y);
     }
 
     drawCircle(){
