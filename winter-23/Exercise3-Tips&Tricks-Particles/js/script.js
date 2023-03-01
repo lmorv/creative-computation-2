@@ -169,7 +169,7 @@ class RandomWalker {
 
         var randNum = floor(random(4));
         
-        this.vel.add(this.acc);
+        this.vel.add(this.acc); 
         this.pos.add(this.vel);
         // this.pos.x += this.vel.x;
         // this.pos.y += this.vel.y;
@@ -230,7 +230,7 @@ class Wanderer {
         this.x = map(noise(xOffset1), 0, 1, 0, width);
         this.y = map(noise(xOffset2), 0, 1, 0, height);
 
-        this.speed = 0.01;
+        this.speed = 0.004;
     }
 
     display() {
