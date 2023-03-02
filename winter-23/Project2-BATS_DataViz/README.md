@@ -13,4 +13,4 @@
 
 ### Concept Art:
 
-
+<img src="/assets/images/Bats_ConceptArt.png" width="900">
