@@ -9,8 +9,8 @@
 
 ### Moodboard:
 
-<img src="/assets/images/Bats_Moodboard.png" width="900">
+![Mood](/assets/images/Bats_Moodboard.png)
 
 ### Concept Art:
 
-<img src="/assets/images/Bats_ConceptArt.png" width="900">
+![Art](/assets/images/Bats_ConceptArt.png)
