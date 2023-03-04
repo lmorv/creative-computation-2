@@ -21,13 +21,13 @@ function preload() {
     table = loadTable("Bats_Dataset1.csv", "csv", "header");
 
     // load images into array
-    // for (let i = 0; i < NUM_BAT_IMAGES; i++) {
-    //     let batImg = loadImage('assets/images/bat${i}.jpg');
-    //     bats.push(batImg);
-    // }
+    for (let i = 0; i < NUM_BAT_IMAGES; i++) {
+        let batImg = loadImage('assets/images/bat${i}.jpg');
+        bats.push(batImg);
+    }
 
     // set bat image:
-    batImg = loadImage('assets/images/bat1.jpg');
+    // batImg = loadImage('assets/images/bat1.jpg');
 
 }
 
@@ -38,6 +38,8 @@ Description of setup
 function setup() {
     createCanvas(windowWidth, windowHeight);
     background(0);
+
+    batImg = random(bats);
 
     batImg.height = windowHeight; 
     batImg.width = windowWidth;
