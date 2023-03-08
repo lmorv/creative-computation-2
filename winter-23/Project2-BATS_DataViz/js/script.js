@@ -40,7 +40,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     background(0);
 
-    batImg = random(bats);
+    // batImg = random(bats);
 
     batImg.height = windowHeight; 
     batImg.width = windowWidth;
@@ -59,7 +59,7 @@ function setup() {
             strokeWeight(random(5));
             stroke(color(c));
             // point(col+ windowWidth / 2, row + 90); // This is a dot
-            
+
             //This is a curve:
             curve(
                 xPos,
