@@ -11,7 +11,7 @@ let table;
 
 const NUM_BAT_IMAGES = 25;
 
-let bats = [];
+// let bats = [];
 let batImg;
 
 /**
@@ -21,13 +21,14 @@ function preload() {
     table = loadTable("Bats_Dataset1.csv", "csv", "header");
 
     // load images into array
-    for (let i = 0; i < NUM_BAT_IMAGES; i++) {
-        let batImg = loadImage('assets/images/bat${i}.jpg');
-        bats.push(batImg);
-    }
+    // for (let i = 0; i < NUM_BAT_IMAGES; i++) {
+    //     console.log("Getting images");
+    //     let batImg = loadImage('assets/images/bat${i}.jpg');
+    //     bats.push(batImg);
+    // }
 
     // set bat image:
-    // batImg = loadImage('assets/images/bat1.jpg');
+    batImg = loadImage('assets/images/bat1.jpg');
 
 }
 
@@ -57,7 +58,9 @@ function setup() {
             noFill();
             strokeWeight(random(5));
             stroke(color(c));
-            // point(col+ windowWidth / 2, row + 90); // This a dot
+            // point(col+ windowWidth / 2, row + 90); // This is a dot
+            
+            //This is a curve:
             curve(
                 xPos,
                 yPos,
